@@ -27,6 +27,7 @@ module.exports = class GrassEater extends LiveForm {
     mul() {
         let emptyCells = this.chooseCell(0);
         let newCell = random(emptyCells);
+        grassEaterHashiv++;
 
         if (newCell) {
             let x = newCell[0];

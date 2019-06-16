@@ -2174,7 +2174,7 @@ module.exports={
             "namespace": "",
             "file": "lib/addons/p5.sound.js",
             "line": 2430,
-            "description": "<p>FFT (Fast Fourier Transform) is an analysis algorithm that\nisolates individual\n<a href=\"https://en.wikipedia.org/wiki/Audio_frequency\">\naudio frequencies</a> within a waveform.</p>\n\n<p>Once instantiated, a p5.FFT object can return an array based on\ntwo types of analyses: <br> • <code>FFT.waveform()</code> computes\namplitude values along the time domain. The array indices correspond\nto samples across a brief moment in time. Each value represents\namplitude of the waveform at that sample of time.<br>\n• <code>FFT.analyze() </code> computes amplitude values along the\nfrequency domain. The array indices correspond to frequencies (i.e.\npitches), from the lowest to the highest that humans can hear. Each\nvalue represents amplitude at that slice of the frequency spectrum.\nUse with <code>getEnergy()</code> to measure amplitude at specific\nfrequencies, or within a range of frequencies. </p>\n\n<p>FFT analyzes a very short snapshot of sound called a sample\nbuffer. It returns an array of amplitude measurements, referred\nto as <code>bins</code>. The array is 1024 bins long by default.\nYou can change the bin array length, but it must be a power of 2\nbetween 16 and 1024 in order for the FFT algorithm to function\ncorrectly. The actual size of the FFT buffer is twice the\nnumber of bins, so given a standard sample rate, the buffer is\n2048/44100 seconds long.</p>",
+            "description": "<p>FFT (Fast Fourier Transform) is an analysis algorithm that\nisolates individual\n<a href=\"https://en.wikipedia.org/wiki/Audio_frequency\">\naudio frequencies</a> within a waveform.</p>\n\n<p>Once instantiated, a p5.FFT object can return an array based on\ntwo types of analyses: <br> • <code>FFT.waveform()</code> computes\namplitude values along the time domain. The array indices correspond\nto samples across a brief moment in time. Each value represents\namplitude of the waveform at that sample of time.<br>\n• <code>FFT.analyze() </code> computes amplitude values along the\nfrequency domain. The array indices correspond to frequencies (i.e.\npitches), from the lowest to the highest that humans can hear. Each\nvalue represents amplitude at that slice of the frequency spectrum.\nUse with <code>getlife()</code> to measure amplitude at specific\nfrequencies, or within a range of frequencies. </p>\n\n<p>FFT analyzes a very short snapshot of sound called a sample\nbuffer. It returns an array of amplitude measurements, referred\nto as <code>bins</code>. The array is 1024 bins long by default.\nYou can change the bin array length, but it must be a power of 2\nbetween 16 and 1024 in order for the FFT algorithm to function\ncorrectly. The actual size of the FFT buffer is twice the\nnumber of bins, so given a standard sample rate, the buffer is\n2048/44100 seconds long.</p>",
             "is_constructor": 1,
             "params": [
                 {
@@ -19255,7 +19255,7 @@ module.exports={
         {
             "file": "lib/addons/p5.sound.js",
             "line": 2633,
-            "description": "<p>Returns an array of amplitude values (between 0 and 255)\nacross the frequency spectrum. Length is equal to FFT bins\n(1024 by default). The array indices correspond to frequencies\n(i.e. pitches), from the lowest to the highest that humans can\nhear. Each value represents amplitude at that slice of the\nfrequency spectrum. Must be called prior to using\n<code>getEnergy()</code>.</p>\n",
+            "description": "<p>Returns an array of amplitude values (between 0 and 255)\nacross the frequency spectrum. Length is equal to FFT bins\n(1024 by default). The array indices correspond to frequencies\n(i.e. pitches), from the lowest to the highest that humans can\nhear. Each value represents amplitude at that slice of the\nfrequency spectrum. Must be called prior to using\n<code>getlife()</code>.</p>\n",
             "itemtype": "method",
             "name": "analyze",
             "params": [
@@ -19273,7 +19273,7 @@ module.exports={
                 }
             ],
             "return": {
-                "description": "spectrum    Array of energy (amplitude/volume)\n                            values across the frequency spectrum.\n                            Lowest energy (silence) = 0, highest\n                            possible is 255.",
+                "description": "spectrum    Array of life (amplitude/volume)\n                            values across the frequency spectrum.\n                            Lowest life (silence) = 0, highest\n                            possible is 255.",
                 "type": "Array"
             },
             "example": [
@@ -19286,24 +19286,24 @@ module.exports={
         {
             "file": "lib/addons/p5.sound.js",
             "line": 2725,
-            "description": "<p>Returns the amount of energy (volume) at a specific\n<a href=\"en.wikipedia.org/wiki/Audio_frequency\" target=\"_blank\">\nfrequency</a>, or the average amount of energy between two\nfrequencies. Accepts Number(s) corresponding\nto frequency (in Hz), or a String corresponding to predefined\nfrequency ranges (&quot;bass&quot;, &quot;lowMid&quot;, &quot;mid&quot;, &quot;highMid&quot;, &quot;treble&quot;).\nReturns a range between 0 (no energy/volume at that frequency) and\n255 (maximum energy).\n<em>NOTE: analyze() must be called prior to getEnergy(). Analyze()\ntells the FFT to analyze frequency data, and getEnergy() uses\nthe results determine the value at a specific frequency or\nrange of frequencies.</em></p></p>\n",
+            "description": "<p>Returns the amount of life (volume) at a specific\n<a href=\"en.wikipedia.org/wiki/Audio_frequency\" target=\"_blank\">\nfrequency</a>, or the average amount of life between two\nfrequencies. Accepts Number(s) corresponding\nto frequency (in Hz), or a String corresponding to predefined\nfrequency ranges (&quot;bass&quot;, &quot;lowMid&quot;, &quot;mid&quot;, &quot;highMid&quot;, &quot;treble&quot;).\nReturns a range between 0 (no life/volume at that frequency) and\n255 (maximum life).\n<em>NOTE: analyze() must be called prior to getlife(). Analyze()\ntells the FFT to analyze frequency data, and getlife() uses\nthe results determine the value at a specific frequency or\nrange of frequencies.</em></p></p>\n",
             "itemtype": "method",
-            "name": "getEnergy",
+            "name": "getlife",
             "params": [
                 {
                     "name": "frequency1",
-                    "description": "<p>Will return a value representing\n                              energy at this frequency. Alternately,\n                              the strings &quot;bass&quot;, &quot;lowMid&quot; &quot;mid&quot;,\n                              &quot;highMid&quot;, and &quot;treble&quot; will return\n                              predefined frequency ranges.</p>\n",
+                    "description": "<p>Will return a value representing\n                              life at this frequency. Alternately,\n                              the strings &quot;bass&quot;, &quot;lowMid&quot; &quot;mid&quot;,\n                              &quot;highMid&quot;, and &quot;treble&quot; will return\n                              predefined frequency ranges.</p>\n",
                     "type": "Number|String"
                 },
                 {
                     "name": "frequency2",
-                    "description": "<p>If a second frequency is given,\n                              will return average amount of\n                              energy that exists between the\n                              two frequencies.</p>\n",
+                    "description": "<p>If a second frequency is given,\n                              will return average amount of\n                              life that exists between the\n                              two frequencies.</p>\n",
                     "type": "Number",
                     "optional": true
                 }
             ],
             "return": {
-                "description": "Energy   Energy (volume/amplitude) from\n                            0 and 255.",
+                "description": "life   life (volume/amplitude) from\n                            0 and 255.",
                 "type": "Number"
             },
             "class": "p5.FFT",

@@ -24,7 +24,7 @@ module.exports = class Predator extends LiveForm  {
     }
 
     // chooseCell(character) {
-    //     this.getNewDirections()
+    //     this.getNewCoordinates()
     //     var found = []
     //     for (var i in this.directions) {
     //         var x = this.directions[i][0]
@@ -47,6 +47,7 @@ module.exports = class Predator extends LiveForm  {
     mul() {
         let emptyCells = this.chooseCell(0);
         let newCell = random(emptyCells);
+        predatorHashiv++;
 
         if (newCell) {
             let x = newCell[0];

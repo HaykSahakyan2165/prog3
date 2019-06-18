@@ -129,8 +129,10 @@ module.exports = class Amulet extends LiveForm {
 
     // }
     eat() {
-        let emptyCells = this.chooseCell(2,3,);
-        let newCell = random(emptyCells);
+        let newCell1 = this.chooseCell(1);
+        let newCell2 = this.chooseCell(2);
+        let newCell3 = this.chooseCell(3);
+        let newCell = random(newCell1.concat(newCell2,newCell3));
 
         if (newCell) {
 
@@ -149,6 +151,11 @@ module.exports = class Amulet extends LiveForm {
             for (let i in predatorArr) {
                 if (predatorArr[i].x == x && predatorArr[i].y == y) {
                     predatorArr.splice(i, 1)
+                }
+            }
+            for (let i in grassArr) {
+                if (grassArr[i].x == x && grassArr[i].y == y) {
+                    grassArr.splice(i, 1)
                 }
             }
             this.x = x;

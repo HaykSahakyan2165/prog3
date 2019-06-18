@@ -1,6 +1,6 @@
 var LiveForm = require("./LiveForm");
 var random = require("./random");
-var GrassEater = require("./GrassCreater")
+var GrassEater = require("./GrassEater")
 
 module.exports = class GrassEaterCreater extends LiveForm {
     constructor(x, y) {
@@ -41,14 +41,16 @@ module.exports = class GrassEaterCreater extends LiveForm {
     mul() {
         this.multiply++;
         let emptyCells = this.chooseCell(0);
+        // let newCell1 = this.chooseCell(1);
+        // let newCell = random(emptyCells.concat(newCell1));
         let newCell = random(emptyCells);
-        grassCreaterHashiv++;
 
         if (newCell && this.multiply >= 1) {
             // grassHashiv++;
             let x = newCell[0];
             let y = newCell[1];
             matrix[y][x] = 1;
+            console.log(1)
             let grassEaterCreater = new GrassEater(x, y);
             grassEaterCreaterArr.push(grassEaterCreater);
             this.multiply = 0;

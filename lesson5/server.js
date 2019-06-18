@@ -68,7 +68,7 @@ function matrixGenerator(matrixSize, grass, grassEater, predator, grassCreater,g
     }
 
 }
-matrixGenerator(10, 1, 5, 20, 1, 20,1);
+matrixGenerator(10, 1, 5, 3, 1, 1,1);
 //! Creating MATRIX -- END
 
 
@@ -134,6 +134,7 @@ function game() {
     if (grassCreaterArr[0] !== undefined) {
         for (var i in grassCreaterArr) {
             grassCreaterArr[i].mul();
+            // console.log(5);/
         }
     }
     if (grassEaterCreaterArr[0] !== undefined) {

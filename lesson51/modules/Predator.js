@@ -6,8 +6,9 @@ module.exports = class Predator extends LiveForm  {
         super(x,y)
         // this.x = x;
         // this.y = y;
-        this.life = 20;
+        this.life = 15;
         // this.directions = [];
+        this.index = 3
     }
 
     getNewCoordinates() {
@@ -55,14 +56,15 @@ module.exports = class Predator extends LiveForm  {
             matrix[y][x] = 3;
             let predator = new Predator(x, y);
             predatorArr.push(predator);
-            this.life = 15;
+            this.life =17;
         }
     }
 
     move() {
         var empty = random(this.chooseCell(0))
         this.life--;
-        if (empty) {
+        
+        if (weather != "Dzmer" && empty) {
             var newX = empty[0]
             var newY = empty[1]
             matrix[newY][newX] = 3
@@ -77,7 +79,7 @@ module.exports = class Predator extends LiveForm  {
         let emptyCells = this.chooseCell(2);
         let newCell = random(emptyCells);
 
-        if (newCell) {
+        if (newCell && weather != "Dzmer") {
 
             this.life++;
             let x = newCell[0];

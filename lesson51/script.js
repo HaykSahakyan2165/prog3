@@ -2,7 +2,7 @@
 function setup() {
   var socket = io();
 
-  var side = 30;
+  var side = 20;
 
   var matrix = [];
 
@@ -12,7 +12,9 @@ function setup() {
   let grassCountElement = document.getElementById("grassCount");
   let grassEaterCountElement = document.getElementById("grassEaterCount");
   let predatorCountElement = document.getElementById("predatorCount");
-  // let grassCreaterCountElement = document.getElementById('grassCreaterCount');
+  let amuletCountElement = document.getElementById("amuletCount")
+  let grassCreaterCountElement = document.getElementById("grassCreaterCount");
+  let grassEaterCreaterCountElement = document.getElementById("grassEaterCreaterCount");
 
   //! adding socket listener on "data" <-- name, after that fire 'drawCreatures' function
 
@@ -28,7 +30,9 @@ function setup() {
     grassCountElement.innerText = data.grassCounter;
     grassEaterCountElement.innerText = data.grassEatersCounter;
     predatorCountElement.innerText = data.predatorCounter;
-    // grassCreaterCountElement.innerText = data.grassCreatersCounter;
+    amuletCountElement.innerText = data.amuletsCounter;
+    grassCreaterCountElement.innerText = data.grassCreatersCounter;
+    grassEaterCreaterCountElement.innerText = data.grassEaterCreaterCounter;
     //! Every time it creates new Canvas woth new matrix size
     createCanvas(matrix[0].length * side, matrix.length * side);
     //! clearing background by setting it to new grey color
@@ -42,9 +46,10 @@ function setup() {
           fill("green");
           rect(j * side, i * side, side, side);
         } else if (matrix[i][j] == 1 && weather == "Dzmer") {
-          fill("#ad9200");
+          fill(" white");
           rect(j * side, i * side, side, side);
-        } else if (matrix[i][j] == 2) {
+        }
+        else if (matrix[i][j] == 2) {
           fill("orange");
           rect(j * side, i * side, side, side);
         } else if (matrix[i][j] == 0) {

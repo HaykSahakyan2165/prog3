@@ -7,6 +7,7 @@ module.exports = class GrassCreater extends LiveForm {
     constructor(x, y) {
         super(x, y);
         this.multiply = 0;
+        this.index = 4
         // this.x = x;
         // this.y = y;
         // this.multiply = 0;
@@ -59,9 +60,9 @@ module.exports = class GrassCreater extends LiveForm {
         this.multiply++;
         let emptyCells = this.chooseCell(0);
         let newCell = random(emptyCells);
-        grassCreaterHashiv++;
+        // grassCreaterHashiv++;
 
-        if (newCell && this.multiply >= 1) {
+        if (newCell && this.multiply >= 1 && weather != "Dzmer") {
             // grassHashiv++;
             let x = newCell[0];
             let y = newCell[1];

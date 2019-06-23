@@ -6,6 +6,7 @@ module.exports = class Grass extends LiveForm {
     constructor(x, y) {
         super(x, y);
         this.multiply = 0;
+        this.index = 1;
     }
     getNewCoordinates() {
         this.directions = [

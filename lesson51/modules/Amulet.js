@@ -5,36 +5,10 @@ module.exports = class Amulet extends LiveForm {
     constructor(x, y) {
         super(x,y);
         this.index = 5
-        // this.x = x;
-        // this.y = y;
-        // this.multyply = 0
+
         this.life = 50;
-        // this.directions = [];
-        // this.movement = 0
-
-
-
     }
-    // choosecell( ch1, ch2) {
-    //     var found = [];
-    //     for (var i in this.directions) {
-    //         var x = this.directions[i][0];
-    //         var y = this.directions[i][1];
 
-    //         if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-
-    //             if (matrix[y][x] == ch1) {
-    //                 found.push(this.directions[i]);
-    //             }
-    //             if (matrix[y][x] == ch2) {
-    //                 found.push(this.directions[i]);
-    //             }
-
-    //         }
-
-    //     }
-    //     return found;
-    // }
 
 
 
@@ -95,42 +69,8 @@ module.exports = class Amulet extends LiveForm {
         ];
     }
 
-    // eat() {
-    //     this.getNewCoordinates();
-    //     var norVandak = this.choosecell(3, 2,);
-    //     var choosecell = random(norVandak)
-    //     if (choosecell) {
-    //         this.life++;
-    //         matrix[this.y][this.x] = 0;
-    //         this.y = choosecell[1];
-    //         this.x = choosecell[0];
-    //         matrix[this.y][this.x] = 6
 
-    //         for (var i in gishatichArr) {
-    //             if (this.y == predatorArr[i].y && this.x == predatorArr[i].x) {
-    //                 predatorArr.splice(i, 1);
-    //                 break;
-    //             }
-
-    //         }
-    //         for (var i in grassEaterArr) {
-    //             if (this.y == grassEaterArr[i].y && this.x == grassEaterArr[i].x) {
-    //                 grassEaterArr.splice(i, 1);
-    //                 break;
-    //             }
-
-    //         }
-
-
-    //     }
-    //     else {
-    //         this.move();
-
-    //     }
-
-    // }
     eat() {
-        // let newCell1 = this.chooseCell(1);
         let newCell2 = this.chooseCell(2);
         let newCell3 = this.chooseCell(3);
         let newCell = random(newCell2.concat(newCell3));
@@ -154,11 +94,7 @@ module.exports = class Amulet extends LiveForm {
                     predatorArr.splice(i, 1)
                 }
             }
-            // for (let i in grassArr) {
-            //     if (grassArr[i].x == x && grassArr[i].y == y) {
-            //         grassArr.splice(i, 1)
-            //     }
-            // }
+           
             this.x = x;
             this.y = y;
 
@@ -173,23 +109,7 @@ module.exports = class Amulet extends LiveForm {
 
 
 
-    // move() {
-    //     this.getNewCoordinates();
-    //     var norVandak = this.choosecell( 0);
-    //     var choosecell = random(norVandak)
-    //     if (choosecell) {
-    //         this.energy--;
-    //         matrix[this.y][this.x] = 0;
-    //         this.y = choosecell[1];
-    //         this.x = choosecell[0];
-    //         matrix[this.y][this.x] = 6;
 
-
-
-    //     }
-
-
-    // }
     move() {
         var empty = random(this.chooseCell(0))
         this.life--;
@@ -204,19 +124,7 @@ module.exports = class Amulet extends LiveForm {
         }
     }
 
-    // mul() {
-    //     this.movement++;
-    //     var norVandak = random(this.choosecell(0));
-    //     if (norVandak) {
-    //         if (this.energy >= 70) {
-    //             var amulet = new Amulet(norVandak[0]);
-    //             amuletArr.push(amulet);
-    //             matrix[norVandak[1]][norVandak[0]] = 6;
-    //             this.energy = 60;
-    //         }
-    //     }
 
-    // }
     mul() {
         let emptyCells = this.chooseCell(0);
         let newCell = random(emptyCells);
@@ -234,17 +142,7 @@ module.exports = class Amulet extends LiveForm {
 
 
 
-    // die() {
-    //     if (this.energy == 0) {
-    //         matrix[this.y][this.x] = 0;
-    //         for (var i in amuletArr) {
-    //             if (this.y == amuletArr[i].y && this.x == amuletArr[i].x) {
-    //                 amuletArr.splice(i, 1);
-    //                 break;
-    //             }
-    //         }
-    //     }
-    // }
+ 
     die() {
         matrix[this.y][this.x] = 0;
 

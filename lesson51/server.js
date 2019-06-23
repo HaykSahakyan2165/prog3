@@ -1,4 +1,4 @@
-//! Requiring modules  --  START
+
 var Grass = require("./modules/Grass.js");
 var GrassEater = require("./modules/GrassEater.js");
 var Predator = require("./modules/Predator.js");
@@ -6,9 +6,9 @@ var GrassCreater = require("./modules/GrassCreater.js");
 var GrassEaterCreater = require("./modules/GrassEaterCreater.js");
 var Amulet = require("./modules/Amulet.js");
 let random = require("./modules/random");
-//! Requiring modules  --  END
 
-//! Setting global arrays  --  START
+
+
 grassArr = [];
 grassEaterArr = [];
 predatorArr = [];
@@ -22,9 +22,11 @@ grassCreaterHashiv = 3;
 predatorHashiv = 25;
 grassEaterCreaterHashiv = 1;
 amuletHashiv = 3;
-//! Setting global arrays  -- END
+weather="";
+index = 0;
 
-//! Creating MATRIX -- START
+
+
 function matrixGenerator(
   matrixSize,
   grass,
@@ -41,8 +43,8 @@ function matrixGenerator(
     }
   }
   for (let i = 0; i < grass; i++) {
-    let customX = Math.floor(random(matrixSize)); // 0-9
-    let customY = Math.floor(random(matrixSize)); // 4
+    let customX = Math.floor(random(matrixSize)); 
+    let customY = Math.floor(random(matrixSize)); 
     matrix[customY][customX] = 1;
   }
   for (let i = 0; i < grassEater; i++) {
@@ -72,9 +74,8 @@ function matrixGenerator(
   }
 }
 matrixGenerator(25, 20,15, 30, 3, 1,3 );
-//! Creating MATRIX -- END
 
-//! SERVER STUFF  --  START
+
 var express = require("express");
 var app = express();
 var server = require("http").Server(app);
@@ -84,7 +85,7 @@ app.get("/", function (req, res) {
   res.redirect("index.html");
 });
 server.listen(3000);
-//! SERVER STUFF END  --  END
+
 
 function creatingObjects() {
   for (var y = 0; y < matrix.length; y++) {
@@ -115,6 +116,24 @@ function creatingObjects() {
 creatingObjects();
 
 function game() {
+  if(index <=5){
+    weather = "Garun";
+}
+else if(index >5 && index <=10){
+    weather = "Amar";
+}
+else if(index > 10 && index <=15){
+    weather = "Ashun";
+}
+else if(index > 15 && index <=20){
+    weather ="Dzmer";
+}
+else if(index >=20){
+    index = 0;
+}
+
+index++;
+
   if (grassArr[0] !== undefined) {
     for (var i in grassArr) {
       grassArr[i].mul();
@@ -146,7 +165,7 @@ function game() {
     }
   }
 
-  //! Object to send
+  
   let sendData = {
     matrix: matrix,
     grassCounter: grassHashiv,
@@ -154,36 +173,38 @@ function game() {
     grassCreatersCounter: grassCreaterHashiv,
     predatorCounter: predatorHashiv,
     amuletsCounter: amuletHashiv,
-    grassEaterCreaterCounter: grassEaterCreaterHashiv
+    grassEaterCreaterCounter: grassEaterCreaterHashiv,
+    exanak: weather
   };
 
-  //! Send data over the socket to clients who listens "data"
+  
   io.sockets.emit("data", sendData);
 }
 
-// Weather
-
-weather = "Amar"
-
-function exanak() {
-  if (weather == "Garun") {
-    weather = "Amar"
-  }
-  else if (weather == "Amar") {
-    weather = "Ashun"
-  }
-  else if (weather == "Ashun") {
-    weather = "Dzmer"
-  }
-  else if (weather == "Dzmer") {
-    weather = "Garun"
-  }
-  io.sockets.emit("weather", weather)
-
-}
 
 
-setInterval(exanak, 5000)
+// weather = "Amar"
+
+// function exanak() {
+//   if (weather == "Garun") {
+//     weather = "Amar"
+//   }
+//   else if (weather == "Amar") {
+//     weather = "Ashun"
+//   }
+//   else if (weather == "Ashun") {
+//     weather = "Dzmer"
+//   }
+//   else if (weather == "Dzmer") {
+//     weather = "Garun"
+//   }
+
+//   io.sockets.emit("weather", weather)
+
+// }
+
+
+// setInterval(exanak, 5000)
 
 
 setInterval(game, 500);
